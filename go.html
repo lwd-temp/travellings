@@ -16,29 +16,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>开往-友链接力</title>
-    <link rel="shortcut icon" href="/assets/favicon.png" />
     <script>
-        function travelling() {
-            function reqListener() {
-                var response = JSON.parse(this.responseText);
-                if (response.success) {
-                    var randomItem = response.data[0];
-                    window.location = randomItem.url;
-                } else {
-                    console.error("API request failed");
-                }
-            }
-
-            const preferredTag = localStorage.getItem("t_preference_tag");
-            let apiUrl = "https://api.travellings.cn/random";
-            if (preferredTag) apiUrl += "?tag=" + preferredTag;
-
-            var oReq = new XMLHttpRequest();
-            oReq.addEventListener("load", reqListener);
-            oReq.open("GET", apiUrl);
-            oReq.send();
+        const customPage = localStorage.getItem("t_preference_page");
+        if (customPage) {
+            location.href = "./" + customPage;
         }
     </script>
+    <link rel="icon" href="./assets/favicon.png" />
+    <script async src="https://umami.luochancy.com/script.js" data-website-id="23ac5682-b5b5-4013-8a32-5ceb3e598df2"></script>
     <style>
         * {
             color: #111827;
@@ -281,7 +266,8 @@
             world…</a>
     </div>
     <div class="botCenter">
-        ↩️ Tips: <b>后退</b>网页可再次开往<br />
+        ↩️ Tips: <b>后退</b>网页可再次开往 | <a href="./preference/">⚙️ 开往偏好设置</a> 
+        <br />
         <a href="https://www.travellings.cn/docs/join" target="_blank">🚇 加入</a>&nbsp;|&nbsp;
         <!--<a href="https://status.travellings.link/status/index" target="_blank">♻️ 状态</a><br />-->
         <a href="https://beian.miit.gov.cn/" target="_blank">🇨🇳 闽ICP备2023011626号-1</a> | <a target="_blank"
@@ -289,9 +275,7 @@
             35059102000048号</a><!--<br />本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">🆙 又拍云</a>提供CDN加速服务<br />-->
         <!--<a href="https://github.com/travellings-link/travellings/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/travellings-link/travellings?style=social" height="18px"></a>-->
     </div>
-    <script>
-        window.setTimeout(travelling, 1500);
-    </script>
+    <script src="./assets/js/go.js"></script>
 </body>
 
 </html>
